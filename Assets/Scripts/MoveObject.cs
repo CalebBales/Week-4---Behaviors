@@ -2,10 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveObject : MonoBehaviour
+public class MoveObject : MonoBehaviour 
+// MonoBehaviour is the parent class
+// Any class that is gonna be a component is gonna be a child of MonoBehaviour
+// MonoBehaviour is the parent class of all Unity components
 {
+    // serialized means that you can change the values in the Unity Editor, instead
+    // of having to go back to the script
     [SerializeField] float moveSpeed;
     [SerializeField] Vector3 moveDirection;
+
+    [SerializeField] GameObject StationarySphere;
 
     float totalMoveDistance;
     Vector3 startingLocation;   
@@ -17,6 +24,7 @@ public class MoveObject : MonoBehaviour
         startingLocation = gameObject.transform.position;
     }
 
+    
     // Update is called once per frame
     void Update()
     {
@@ -27,7 +35,8 @@ public class MoveObject : MonoBehaviour
             FlipMoveDirection();
         }
 
-        //gameObject.transform.Translate(moveDirection * moveSpeed);
+        //MoveObject thisMoveObject = GetComponent<MoveObject>();
+        gameObject.transform.Translate(moveDirection * moveSpeed);
     }
 
     void FlipMoveDirection()
