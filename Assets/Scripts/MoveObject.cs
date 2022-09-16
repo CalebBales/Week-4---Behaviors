@@ -20,7 +20,7 @@ public class MoveObject : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        totalMoveDistance = 10f;
+        totalMoveDistance = 3.5f;
         startingLocation = gameObject.transform.position;
     }
 
@@ -32,6 +32,8 @@ public class MoveObject : MonoBehaviour
 
         if (distanceTraveled > totalMoveDistance)
         {
+            this.enabled = false;
+            startingLocation = gameObject.transform.position;
             FlipMoveDirection();
         }
 
